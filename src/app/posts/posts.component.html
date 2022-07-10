@@ -1,0 +1,40 @@
+<!-- <div class="container">
+    <div class="row">
+        <div *ngFor="let comment of posts"  class="card m-3" style="width: 18rem; background-color: #eee;">
+            <img  src="../../assets/tours/{{comment.imageCover}}"   class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{comment.name}} </h5>
+              <p class="card-text">{{comment.description | slice:0:100}}... </p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+    </div>
+</div>
+ -->
+
+
+<form>
+    <input
+    type="text"
+    (keyup.enter)="addPost(post)"
+    #post
+    class="form-control"
+    placeholder="add comment..."
+   />
+  <ul class="list-group">
+    <li *ngFor="let post of posts;index as i"
+      class="list-group-item d-flex justify-content-between align-items-center"
+    >
+      <div>{{i+1}}. {{post?.title}} </div>
+
+      <div>
+
+          <p *ngIf="!post.approve" (click)="updatePost(post)" class="btn btn-primary  btn-sm">approve</p>
+          <p *ngIf="post.approve"  class="btn btn-success btn-sm">approved</p>
+    
+          <p *ngIf="post.approve" style="margin-left: 10px;" (click)="deletePost(post)" class="btn btn-danger btn-sm">delete</p>
+      </div>
+
+    </li>
+  </ul>
+</form> 
